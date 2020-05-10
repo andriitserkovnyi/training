@@ -20,7 +20,78 @@ paths:
       summary: weather
       tags:
         - Weather endpoints
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  coord:
+                    type: object
+                    properties:
+                      lon:
+                        type: string
+                        description: 'City geo location, longitude'
+                        example: '145.77'
+                      lat:
+                        type: string
+                        description: 'City geo location, latitude'
+                        example: '-16.92'
+                  cod:
+                    type: string
+                    description: Internal parameter
+                    example: '200'
+                  name:
+                    type: string
+                    example: Cairns
+                    description: name
+                  id:
+                    type: string
+                    example: '2172797'
+                    description: City ID
+              examples:
+                example-1:
+                  value:
+                    coord:
+                      lon: -121.95
+                      lat: 37.35
+                    weather:
+                      - id: 803
+                        main: Clouds
+                        description: broken clouds
+                        icon: 04n
+                    base: stations
+                    main:
+                      temp: 45.25
+                      feels_like: 41.16
+                      temp_min: 41
+                      temp_max: 50
+                      pressure: 1026
+                      humidity: 75
+                    visibility: 16093
+                    wind:
+                      speed: 2.57
+                      deg: 36
+                    clouds:
+                      all: 75
+                    dt: 1579415808
+                    sys:
+                      type: 1
+                      id: 5845
+                      country: US
+                      sunrise: 1579360793
+                      sunset: 1579396557
+                    timezone: -28800
+                    id: 0
+                    name: Santa Clara
+                    cod: 200
+                example-2: {}
+            application/xml:
+              schema:
+                type: object
+                properties: {}
       operationId: get-weather
       description: 'Access current weather data for any location on Earth including over 200,000 cities! Current weather is frequently updated based on global models and data from more than 40,000 weather stations.'
       parameters:
